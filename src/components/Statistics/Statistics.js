@@ -16,15 +16,13 @@ export default function Statistics({
   );
 }
 
-const renderStatistics = function (options) {
-  /* Object.keys() возвращает массив из собственных перечисляемых свойств переданного объекта */
-  /* options - чьи собственные перечисляемые свойства будут возвращены */
-  return Object.keys(options).map((key) => (
+function renderStatistics(options) {
+  return options.map((key) => (
     <p className={s.point} key={key}>
       {key}: {options[key]}
     </p>
   ));
-};
+}
 
 Statistics.propTypes = {
   options: PropTypes.object.isRequired,

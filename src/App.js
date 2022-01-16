@@ -28,6 +28,8 @@ class App extends Component {
     return total > 0 ? Math.round((this.state.good / total) * 100) : 0;
   };
   render() {
+    /* Object.keys() возвращает массив из собственных перечисляемых свойств переданного объекта */
+    /* options - чьи собственные перечисляемые свойства будут возвращены */
     const options = Object.keys(this.state);
     const total = this.countTotalFeedback();
     return (
@@ -42,7 +44,8 @@ class App extends Component {
         <Section title="Statistics">
           {total > 0 ? (
             <Statistics
-              options={this.state}
+              // options={this.state}
+              options={options}
               total={total}
               positivePercentage={this.countPositiveFeedbackPercentage()}
             ></Statistics>
