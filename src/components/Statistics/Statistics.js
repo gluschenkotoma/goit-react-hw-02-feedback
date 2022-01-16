@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import s from "./Statistics.module.scss";
+
 export default function Statistics({
   options,
   total = 0,
@@ -24,6 +25,7 @@ const renderStatistics = function (options) {
     </p>
   ));
 };
+
 Statistics.propTypes = {
   options: PropTypes.object.isRequired,
   total: PropTypes.number.isRequired,

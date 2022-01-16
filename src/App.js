@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { GlobalStyle } from "./components/GlobalStyles";
 
 import Section from "./components/Section";
 import FeedbackOptions from "./components/FeedbackOptions";
@@ -16,7 +17,9 @@ class App extends Component {
   countTotalFeedback = () => {
     // Object.values возвращает массив значений перечисляемых свойств объекта
     // reduce-возвращает сумму всех элементов в массиве.
-    return Object.values(this.state).reduce((acc, value) => (acc += value), 0);
+    // return Object.values(this.state).reduce((acc, value) => (acc += value), 0);
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
   };
   // фу-я соотношения хороших стейтов от ощего количества стейтов
   //Math.round возвращает число, округлённое к ближайшему целому.
@@ -25,12 +28,14 @@ class App extends Component {
     return total > 0 ? Math.round((this.state.good / total) * 100) : 0;
   };
   render() {
+    const options = Object.keys(this.state);
     const total = this.countTotalFeedback();
     return (
       <>
+        <GlobalStyle />
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={this.state}
+            options={options}
             onLeaveFeedback={this.addFeedback}
           />
         </Section>

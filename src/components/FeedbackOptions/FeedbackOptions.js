@@ -5,10 +5,10 @@ import s from "./FeedbackOptions.module.scss";
 function FeedbackOptions({ options, onLeaveFeedback }) {
   console.log("options", options); //options {good: 0, neutral: 0, bad: 0}
   return (
-    <div>
+    <ul>
       {/* Object.keys() возвращает массив из собственных перечисляемых свойств переданного объекта */}
       {/* options - чьи собственные перечисляемые свойства будут возвращены */}
-      {Object.keys(options).map((key) => (
+      {/* {Object.keys(options).map((key) => (
         <button
           key={key}
           type="button"
@@ -20,8 +20,20 @@ function FeedbackOptions({ options, onLeaveFeedback }) {
         >
           {`${key}`}
         </button>
+      ))} */}
+      {options.map((key) => (
+        <li key={key}>
+          <button
+            type="button"
+            feedbackRating={key}
+            onClick={() => onLeaveFeedback(key)}
+            className={s.item}
+          >
+            {key}
+          </button>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 
